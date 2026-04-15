@@ -1,0 +1,104 @@
+#!/bin/bash
+
+while true
+do
+    echo "------ MENU ------"
+    echo "1. Sum of n natural numbers"
+    echo "2. Sum using formula"
+    echo "3. Sum of even numbers"
+    echo "4. Sum of odd numbers"
+    echo "5. Sum of digits"
+    echo "6. Sum of array elements"
+    echo "7. Sum of two numbers"
+    echo "8. Sum of numbers in range"
+    echo "9. Exit"
+    echo "Enter your choice:"
+    read ch
+
+    case $ch in
+    1)
+        read -p "Enter n: " n
+        sum=0
+        for ((i=1;i<=n;i++))
+        do
+            sum=$((sum+i))
+        done
+        echo "Sum = $sum"
+        ;;
+
+    2)
+        read -p "Enter n: " n
+        sum=$((n*(n+1)/2))
+        echo "Sum = $sum"
+        ;;
+
+    3)
+        read -p "Enter n: " n
+        sum=0
+        for ((i=2;i<=n;i+=2))
+        do
+            sum=$((sum+i))
+        done
+        echo "Sum of even numbers = $sum"
+        ;;
+
+    4)
+        read -p "Enter n: " n
+        sum=0
+        for ((i=1;i<=n;i+=2))
+        do
+            sum=$((sum+i))
+        done
+        echo "Sum of odd numbers = $sum"
+        ;;
+
+    5)
+        read -p "Enter number: " num
+        sum=0
+        while [ $num -gt 0 ]
+        do
+            digit=$((num % 10))
+            sum=$((sum + digit))
+            num=$((num / 10))
+        done
+        echo "Sum of digits = $sum"
+        ;;
+
+    6)
+        arr=(10 20 30 40)
+        sum=0
+        for i in "${arr[@]}"
+        do
+            sum=$((sum+i))
+        done
+        echo "Sum of array = $sum"
+        ;;
+
+    7)
+        read -p "Enter two numbers: " a b
+        sum=$((a+b))
+        echo "Sum = $sum"
+        ;;
+
+    8)
+        read -p "Enter start and end: " start end
+        sum=0
+        for ((i=start;i<=end;i++))
+        do
+            sum=$((sum+i))
+        done
+        echo "Sum = $sum"
+        ;;
+
+    9)
+        echo "Exiting..."
+        break
+        ;;
+
+    *)
+        echo "Invalid choice!"
+        ;;
+    esac
+
+    echo "-------------------"
+done
